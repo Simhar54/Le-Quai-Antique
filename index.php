@@ -6,9 +6,13 @@ define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https" :
     "://" . $_SERVER['HTTP_HOST'] . $_SERVER["PHP_SELF"]));
 
 
-require_once('controllers/Visitor/VisitorController.controller.php');
+require_once('controllers/Common/ErrorController.controller.php');
+require_once('controllers/User/AccueilController.controller.php');
 
-$visitorcontroller = new VisitorController();
+$errorcontroller = new ErrorController();
+$accueilcontroller = new AccueilController();
+
+
 
 try {
     if (empty($_GET['page'])) {
@@ -21,11 +25,11 @@ try {
 
     switch ($page) {
         case 'accueil':
-            $visitorcontroller->accueil();
+            $accueilcontroller->accueil();
             break;
         default:
             throw new Exception('Page introuvable');
     }
 } catch (Exception $e) {
-    $maincontroller->errorPage($e->getMessage());
+    $errorcontroller->errorPage($e->getMessage());
 }

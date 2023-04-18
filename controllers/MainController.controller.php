@@ -1,7 +1,18 @@
 <?php
 
+require_once 'controllers/Common/TemplateController.controller.php';
+
 abstract class MainController
 {
+
+    protected $templateController;
+
+    public function __construct()
+    {
+        $this->templateController = new TemplateController();
+    }
+
+
     protected function generatePage($data)
     {
         extract($data);
@@ -9,17 +20,5 @@ abstract class MainController
         require_once($view);
         $page_content = ob_get_clean();
         require_once($template);
-    }
-
-    public function errorPage($msg)
-    {
-        $data = [
-            'view' => 'views/common/error.view.php',
-            'template' => 'views/common/template.view.php',
-            'msg' => $msg,
-            'page_title' => 'Page d\'erreur',
-            'page_description' => 'Page d\'erreur',
-        ];
-        $this->generatePage($data);
     }
 }

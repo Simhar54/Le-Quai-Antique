@@ -1,0 +1,101 @@
+/******* Font *******/
+
+@font-face {
+  font-family: "lato";
+  src: url("../assets/font/lato-regular-webfont.woff2") format("woff2"),
+    url("../assets/font/lato-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CormorandGaramont";
+  src: url("../assets/font/CormorantGaramond-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/******* Global *******/
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #f0ead6;
+  font-family: lato, sans-serif;
+}
+
+/******* Main *******/
+
+#qa_sideMenu {
+  margin: 0;
+  padding: 1rem;
+}
+
+#qa_sideMenu_logo {
+  max-width: 200px;
+}
+
+.qa_sideMenu_listGroup {
+  list-style: none;
+  padding-left: 0;
+}
+
+.qa_sideMenu_listItem {
+  display: block;
+  margin-top: 5px;
+}
+
+.qa_sideMenu_listItem a {
+  text-decoration: none;
+  color: black;
+}
+
+/****** Footer *******/
+footer {
+  margin-top: auto;
+  bottom: 0;
+}
+
+.qa_footer {
+  background-color: #8b0000;
+  color: #f0ead6;
+
+  text-align: center;
+}
+
+.qa_footerBox {
+  font-size: small;
+  min-width: 240px;
+  padding: 10px 5px 10px 5px;
+}
+
+.qa_footerBox span {
+  font-size: x-small;
+}
+
+.qa_footerIcon {
+  font-size: 1.5rem;
+  color: #f0ead6;
+  margin: 10px 20px;
+}
+
+#copyright {
+  font-size: x-small;
+  text-align: right;
+}
+
+@media screen and (min-width: 576px) {
+  /* ******HEADER****** */
+
+  footer {
+    position: fixed;
+  }
+}
