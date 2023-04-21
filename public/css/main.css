@@ -30,13 +30,47 @@ html {
 body {
   background-color: #f0ead6;
   font-family: lato, sans-serif;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 /******* Main *******/
 
+#qa_page_content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+main {
+  flex-grow: 1;
+}
+
+#qa_content_container {
+  display: flex;
+  flex-direction: column;
+}
+
+#qa_content_wrapper {
+  margin-left: 25%;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+#qa_content {
+  flex-grow: 1;
+}
+
 #qa_sideMenu {
   margin: 0;
-  padding: 1rem;
+  padding: 0;
+  position: fixed;
+  height: 100%;
+  overflow: hidden;
+  background-color: #f0ead6;
 }
 
 #qa_sideMenu_logo {
@@ -60,8 +94,9 @@ body {
 
 /****** Footer *******/
 footer {
-  margin-top: auto;
+  position: fixed;
   bottom: 0;
+  width: 100%;
 }
 
 .qa_footer {
@@ -73,8 +108,7 @@ footer {
 
 .qa_footerBox {
   font-size: small;
-  min-width: 240px;
-  padding: 10px 5px 10px 5px;
+  padding: 10px 0px 10px 0px;
 }
 
 .qa_footerBox span {
@@ -92,10 +126,17 @@ footer {
   text-align: right;
 }
 
-@media screen and (min-width: 576px) {
-  /* ******HEADER****** */
+@media screen and (max-width: 576px) {
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #qa_content_wrapper {
+    margin-left: 0;
+  }
 
   footer {
-    position: fixed;
+    position: static;
   }
 }

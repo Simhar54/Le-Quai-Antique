@@ -21,31 +21,32 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg d-block d-sm-none">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="<?= URL ?>public/assets/images/logo_quai_antique.svg" alt="Logo" width="80px" height="auto" />
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <?php
+    <header class="mb-auto">
+        <nav class="navbar navbar-expand-lg d-block d-sm-none">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="<?= URL ?>public/assets/images/logo_quai_antique.svg" alt="Logo" width="80px" height="auto" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <?php
 
-                    foreach ($menuItems as $menuItem) : ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= $menuItem['url'] ?>"><?= $menuItem['name'] ?></a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
+                        foreach ($menuItems as $menuItem) : ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= $menuItem['url'] ?>"><?= $menuItem['name'] ?></a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-
-    <main>
-        <div class="container-fluid">
-            <div class="row">
+        </nav>
+    </header>
+    <div id="qa_page_content">
+        <main>
+            <div class="row" id="qa_content_container">
                 <div id="qa_sideMenu" class="col-sm-3 d-none d-sm-block text-center">
                     <div>
                         <img src="<?= URL ?>public/assets/images/logo_quai_antique.svg" alt="" srcset="" width="100%" height="auto" id="qa_sideMenu_logo">
@@ -61,50 +62,58 @@
                             <?php endforeach; ?>
                         </ul>
                     </div>
+
                 </div>
-                <div class="col-9">
-                    <?= $page_content ?>
-                </div>
-
-            </div>
-
-    </main>
+                <div class="col-12 col-sm-9 " id="qa_content_wrapper">
+                    <div id="qa_content">
+                        <?= $page_content ?>
+                    </div>
 
 
-
-    <footer class=" qa_footer container-fluid  ">
-        <div class="row align-items-center justify-content-lg-center justify-content-md-center">
-            <div class="col qa_footerBox">
-                Horaires d'ouverture : <br>
-                <span>
-                    Mardi - Jeudi : 12h00 - 14h30, 19h00 - 22h30 <br>
-                    Week-end : 12h00 - 14h30, 19h00 - 23h00 <br>
-                    Lundi : Fermé <br>
-                </span>
-
-            </div>
-            <div class="col qa_footerBox">
-                Le Quai Antique <br>
-                12 Quai des Allobroges <br>
-                73000 Chambéry Savoie, France <br>
-                Tél : +33 4 50 11 22 33 <br>
-            </div>
-            <div class="col qa_footerBox">
-                Retrouvez-nous sur les réseaux sociaux <br>
-                <div>
-                    <a href="https://www.facebook.com/" target="_blank">
-                        <img class="qa_footerIcon" src="<?= URL ?>public/assets/icon/facebook.svg" alt="" srcset="">
-                    </a>
-                    <a href="https://www.instagram.com/" target="_blank">
-                        <img class="qa_footerIcon" src="<?= URL ?>public/assets/icon/instagram.svg" alt="" srcset="">
-                    </a>
                 </div>
             </div>
-            <div id="copyright">
-                <span>© arnaudSimoncelli(); 2023</span>
-            </div>
 
-    </footer>
+
+
+        </main>
+        <footer class=" qa_footer container-fluid ">
+            <div class="row align-items-center justify-content-around  ">
+                <div class="col-12 col-sm-3 qa_footerBox">
+                    Horaires d'ouverture : <br>
+                    <span>
+                        Mardi - Jeudi : 12h00 - 14h30, 19h00 - 22h30 <br>
+                        Week-end : 12h00 - 14h30, 19h00 - 23h00 <br>
+                        Lundi : Fermé <br>
+                    </span>
+                </div>
+                <div class="col-12 col-sm-3 qa_footerBox">
+                    Le Quai Antique <br>
+                    12 Quai des Allobroges <br>
+                    73000 Chambéry Savoie, France <br>
+                    Tél : +33 4 50 11 22 33 <br>
+                </div>
+                <div class="col-12 col-sm-3 qa_footerBox">
+                    Retrouvez-nous sur les réseaux sociaux <br>
+                    <div>
+                        <a href="https://www.facebook.com/" target="_blank">
+                            <img class="qa_footerIcon" src="<?= URL ?>public/assets/icon/facebook.svg" alt="" srcset="">
+                        </a>
+                        <a href="https://www.instagram.com/" target="_blank">
+                            <img class="qa_footerIcon" src="<?= URL ?>public/assets/icon/instagram.svg" alt="" srcset="">
+                        </a>
+                    </div>
+                </div>
+                <div id="copyright">
+                    <span>© arnaudSimoncelli(); 2023</span>
+                </div>
+        </footer>
+
+
+    </div>
+
+
+
+
 
 
 

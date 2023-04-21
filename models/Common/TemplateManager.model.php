@@ -22,10 +22,6 @@ class TemplateManager
                 'url' => 'reservation',
             ],
             [
-                'name' => 'Qui sommes nous',
-                'url' =>  'quiSommeNous',
-            ],
-            [
                 'name' => 'Contact',
                 'url' => 'contact',
             ],
