@@ -15,6 +15,9 @@ class AccueilController extends MainController
             'page_title' => 'Accueil',
             'page_description' => 'Page d\'accueil',
             'menuItems' => $this->templateController->getMenuItems(),
+            'page_css' => [
+                'accueil.css'
+            ],
         ];
         $this->generatePage($data);
     }

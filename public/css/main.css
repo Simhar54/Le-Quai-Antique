@@ -34,12 +34,43 @@ body {
   max-width: 100%;
 }
 
+.qa_button {
+  background: #8b0000;
+  border: 3px solid #9c4a23;
+  border-radius: 20px;
+  padding: 5px;
+  font-size: small;
+}
+
+.qa_button:hover {
+  color: #f0ead6;
+}
+
+h1 {
+  font-family: CormorandGaramont, serif;
+  font-size: 2rem;
+  font-weight: 400;
+  margin: 0;
+  padding-bottom: 50px;
+  padding-top: 20px;
+}
+
+h2 {
+  font-family: CormorandGaramont, serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
 /******* Main *******/
 
 #qa_page_content {
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  padding-bottom: 152px;
 }
 
 main {
