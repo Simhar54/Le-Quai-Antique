@@ -12,6 +12,7 @@
 
     <!-- Link to CSS -->
     <link rel="stylesheet" href="<?= URL ?>public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= URL ?>public/css/bootstrap-icons.css">
     <link rel="stylesheet" href="<?= URL ?>public/css/main.css">
     <?php if (!empty($page_css)) : ?>
         <?php foreach ($page_css as $fichier_css) : ?>

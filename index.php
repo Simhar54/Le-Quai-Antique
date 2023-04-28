@@ -8,9 +8,11 @@ define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https" :
 
 require_once('controllers/Common/ErrorController.controller.php');
 require_once('controllers/User/AccueilController.controller.php');
+require_once('controllers/User/InscriptionController.controller.php');
 
 $errorcontroller = new ErrorController();
 $accueilcontroller = new AccueilController();
+$inscriptioncontroller = new InscriptionController();
 
 
 
@@ -26,6 +28,9 @@ try {
     switch ($page) {
         case 'accueil':
             $accueilcontroller->accueil();
+            break;
+        case 'inscription':
+            $inscriptioncontroller->inscription();
             break;
         default:
             throw new Exception('Page introuvable');
