@@ -37,6 +37,9 @@ try {
         case 'inscription':
             $inscriptioncontroller->inscription();
             break;
+        case 'validate_suscribe':
+            $inscriptioncontroller->validate_suscribe();
+            break;
         default:
             throw new Exception('Page introuvable');
     }
