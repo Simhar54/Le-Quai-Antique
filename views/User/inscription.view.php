@@ -8,7 +8,7 @@
 
 <div class="container">
     <div class="row">
-        <form action="inscription.php" method="POST" class="needs-validation" novalidate>
+        <form action="validate_suscribe" method="POST" class="needs-validation" novalidate>
             <div class="row">
 
                 <div class="mb-3 col col-12 col-sm-6">
