@@ -3,6 +3,9 @@
     <img class="qa_image_size" src="<?= URL ?>public/assets/images/acount.jpg" alt="" srcset="">
 </div>
 
+<?php Toolbox::displayAlerts(); ?>
+
+
 <div class="container">
     <div class="row">
         <form action="inscription.php" method="POST" class="needs-validation" novalidate>

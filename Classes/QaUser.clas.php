@@ -91,7 +91,6 @@ class QaUser
         }
     }
 
-
     /**
      * Get the value of email
      */
@@ -114,7 +113,6 @@ class QaUser
             throw new InvalidArgumentException("Veuillez entrer un email valide.");
         }
     }
-
 
     /**
      * Get the value of password
@@ -153,7 +151,8 @@ class QaUser
      *
      * @return  self
      */
-    public function setGuests($guests) {
+    public function setGuests($guests)
+    {
         if (is_numeric($guests) && $guests > 0) {
             $this->guests = $guests;
             return $this;
