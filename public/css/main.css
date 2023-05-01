@@ -31,7 +31,6 @@ body {
   background-color: #f0ead6;
   font-family: lato, sans-serif;
   overflow-x: hidden;
-  max-width: 100%;
 }
 
 .qa_button {
@@ -43,6 +42,10 @@ body {
 }
 
 .qa_button:hover {
+  color: #f0ead6;
+}
+
+.qa_icons {
   color: #f0ead6;
 }
 
@@ -171,6 +174,11 @@ footer {
 
   #qa_content_wrapper {
     margin-left: 0;
+  }
+
+  .qa_image_size {
+    width: 100vw;
+    
   }
 
   footer {

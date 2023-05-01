@@ -11,7 +11,7 @@ class QaUser
     private $allergy;
     private $role;
 
-    public function __construct($id, $lastName, $firstName, $email, $password, $guests, $allergy, $role)
+    public function __construct($id = null, $lastName = null, $firstName = null, $email = null, $password = null, $guests = null, $allergy = null, $role = null)
     {
         $this->id = $id;
         $this->lastName = $lastName;
@@ -23,6 +23,7 @@ class QaUser
         $this->role = $role;
     }
 
+    
 
 
     /**
@@ -85,7 +86,7 @@ class QaUser
     {
 
         if (preg_match('/^[a-zA-Z\s]+$/', $firstName) && strlen($firstName) >= 2 && strlen($firstName) <= 20) {
-            $this->lastName = $firstName;
+            $this->firstName = $firstName;
         } else {
             throw new InvalidArgumentException("Le prenom doit contenir uniquement des lettres et des espaces et doit avoir entre 2 et 20 caractères.");
         }
@@ -176,12 +177,13 @@ class QaUser
      */
     public function setAllergy($allergy)
     {
-        if (preg_match('/^[a-zA-Z\s]+$/', $allergy)) {
+        if (empty($allergy) || preg_match('/^[a-zA-Z\s\/]+$/', $allergy)) {
             $this->allergy = $allergy;
         } else {
-            throw new InvalidArgumentException("Le prenom doit contenir uniquement des lettres et des espaces et doit avoir entre 2 et 20 caractères.");
+            throw new InvalidArgumentException("Les allergies doivent contenir uniquement des lettres.");
         }
     }
+    
 
     /**
      * Get the value of role

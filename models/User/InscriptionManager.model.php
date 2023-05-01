@@ -6,18 +6,17 @@ require_once("./classes/QaUser.class.php");
 
 class InscriptionManager extends MainManager {
 
-    public function compareEmail (QaUser $user)
+    public function compareEmail(QaUser $user)
     {
-        $email = $user->getEmail();
         $req = "SELECT * FROM qa_user WHERE email = :email";
         $stmt = $this->getBdd()->prepare($req);
-        $stmt->bindValue(":email", $email, PDO::PARAM_STR);
+        $stmt->bindValue(":email", $user->getEmail(), PDO::PARAM_STR);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         $stmt->closecursor();
         return(empty($result));
-
     }
+    
 
     public function addUser($user) {
         

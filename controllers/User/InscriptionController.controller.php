@@ -36,30 +36,39 @@ class InscriptionController extends MainController
     }
     public function validate_suscribe()
     {
-      
-            
-            $lastName = $_POST['lastName'];
-            $firstName = $_POST['firstName'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-            $guests = $_POST['guests'];
-            $allergy_Array = $_POST['allergies'];
-            $allergy = implode("/ ", $allergy_Array);
-            $passwordCrypte = password_hash($password, PASSWORD_DEFAULT);
-
-            $user = new QaUser(null, $lastName, $firstName, $email, $passwordCrypte, $guests, $allergy, "user");
-
-            if($this->inscriptionManager->compareEmail($user)){
-            
-            $this->inscriptionManager->addUser($user);
-            Toolbox:: addMessageAlerte("Inscription réussie",Toolbox::COULEUR_VERTE);
-    } else {
-        Toolbox:: addMessageAlerte("Email déjà utilisé",Toolbox::COULEUR_ROUGE);
-    }
+        $lastName = $_POST['lastName'];
+        $firstName = $_POST['firstName'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $guests = $_POST['guests'];
+        $allergy_Array = $_POST['allergies'];
+        $allergy = implode("/ ", $allergy_Array);
+        $passwordCrypte = password_hash($password, PASSWORD_DEFAULT);
+    
+        $user = new QaUser();
+        try {
+            $user->setLastName($lastName);
+            $user->setFirstName($firstName);
+            $user->setEmail($email);
+            $user->setPassword($passwordCrypte);
+            $user->setGuests($guests);
+            $user->setAllergy($allergy);
+            $user->setRole("user");
+    
+            if ($this->inscriptionManager->compareEmail($user)) {
+                $this->inscriptionManager->addUser($user);
+                Toolbox::addMessageAlerte("Inscription réussie", Toolbox::COULEUR_VERTE);
+            } else {
+                Toolbox::addMessageAlerte("Email déjà utilisé", Toolbox::COULEUR_ROUGE);
+            }
+        } catch (InvalidArgumentException $e) {
+            Toolbox::addMessageAlerte($e->getMessage(), Toolbox::COULEUR_ROUGE);
+            var_dump($user);
+        }
+    
         header('Location: ' . URL . 'inscription');
-        
- }
-
+    }
+    
    
 
 }

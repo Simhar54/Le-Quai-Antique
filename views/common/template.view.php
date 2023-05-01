@@ -66,8 +66,11 @@
 
                 </div>
                 <div class="col-12 col-sm-9 " id="qa_content_wrapper">
-                    <div id="qa_content">
-                        <?= $page_content ?>
+                    <div id="qa_content row">
+                        <div class="col-11 mx-auto m-0">
+                            <?= $page_content ?>
+                        </div>
+
                     </div>
 
 
@@ -95,14 +98,15 @@
                 </div>
                 <div class="col-12 col-sm-3 qa_footerBox">
                     Retrouvez-nous sur les réseaux sociaux <br>
-                    <div>
+                    <div class="d-flex justify-content-around mt-2">
                         <a href="https://www.facebook.com/" target="_blank">
-                            <img class="qa_footerIcon" src="<?= URL ?>public/assets/icon/facebook.svg" alt="" srcset="">
+                            <i class="bi bi-facebook qa_icons"></i>
                         </a>
                         <a href="https://www.instagram.com/" target="_blank">
-                            <img class="qa_footerIcon" src="<?= URL ?>public/assets/icon/instagram.svg" alt="" srcset="">
+                            <i class="bi bi-instagram qa_icons"></i>
                         </a>
                     </div>
+
                 </div>
                 <div id="copyright">
                     <span>© arnaudSimoncelli(); 2023</span>

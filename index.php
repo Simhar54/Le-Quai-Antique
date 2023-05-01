@@ -9,15 +9,18 @@ define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https" :
 require_once __DIR__ . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
-    
+
 require_once('controllers/Toolbox.php');
 require_once('controllers/Common/ErrorController.controller.php');
 require_once('controllers/User/AccueilController.controller.php');
 require_once('controllers/User/InscriptionController.controller.php');
+require_once('controllers/User/ConnexionController.controller.php');
+
 
 $errorcontroller = new ErrorController();
 $accueilcontroller = new AccueilController();
 $inscriptioncontroller = new InscriptionController();
+$connexioncontroller = new ConnexionController();
 
 
 
@@ -39,6 +42,9 @@ try {
             break;
         case 'validate_suscribe':
             $inscriptioncontroller->validate_suscribe();
+            break;
+        case 'connexion':
+            $connexioncontroller->connexion();
             break;
         default:
             throw new Exception('Page introuvable');
