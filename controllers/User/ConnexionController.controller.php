@@ -1,20 +1,19 @@
 <?php
 
 require_once 'controllers/MainController.controller.php';
-
+require_once 'models/User/UserManager.model.php';
 
 
 class ConnexionController extends MainController
 {
-    
 
+    private $userManager;
 
     public function __construct()
     {
         parent::__construct();
 
-        
-        
+        $this->userManager = new UserManager();
     }
 
 
@@ -29,11 +28,42 @@ class ConnexionController extends MainController
             'page_javascript' => [
                 'validateForm.js'
             ],
-           
+
         ];
         $this->generatePage($data);
     }
-   
-   
 
+
+    public function validate_connexion()
+    {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        $user = new QaUser();
+        try {
+            $user->setEmail($email);
+            $user->setPassword($password);
+            $loggedInUser = $this->userManager->validateCredentials($user);
+
+            if ($loggedInUser !== null) {
+                $_SESSION["user"] = [
+                    "id" => $loggedInUser->getId(),
+                    "role" => $loggedInUser->getRole()
+                ];
+                Securite::genererCookieConnexion();
+                $lastname = htmlspecialchars($loggedInUser->getLastName());
+                $name = htmlspecialchars($loggedInUser->getFirstName());
+
+
+
+                Toolbox::addMessageAlerte("Connexion réussie, bienvenu " . $lastname . " " . $name . ".", Toolbox::COULEUR_VERTE);
+            } else {
+                Toolbox::addMessageAlerte("Email ou mot de passe incorrect
+                <p class='mt-2'>Vous avez oublier votre mot de passe <a href='#' class='qa_link'>Cliquez ici!</a> </p> ", Toolbox::COULEUR_ROUGE);
+            }
+        } catch (InvalidArgumentException $e) {
+            Toolbox::addMessageAlerte($e->getMessage(), Toolbox::COULEUR_ROUGE);
+        }
+        header("Location:" . URL . "connexion");
+    }
 }

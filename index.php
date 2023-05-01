@@ -11,6 +11,7 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 require_once('controllers/Toolbox.php');
+require_once('controllers/Securite.php');
 require_once('controllers/Common/ErrorController.controller.php');
 require_once('controllers/User/AccueilController.controller.php');
 require_once('controllers/User/InscriptionController.controller.php');
@@ -45,6 +46,9 @@ try {
             break;
         case 'connexion':
             $connexioncontroller->connexion();
+            break;
+        case 'validate_connexion':
+            $connexioncontroller->validate_connexion();
             break;
         default:
             throw new Exception('Page introuvable');

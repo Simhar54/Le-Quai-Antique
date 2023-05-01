@@ -23,8 +23,8 @@ class QaUser
         $this->role = $role;
     }
 
-    
 
+    
 
     /**
      * Get the value of id

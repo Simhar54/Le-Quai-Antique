@@ -8,7 +8,7 @@
 
 <div class="container mt-5">
     <div class="row">
-        <form action="connexion" method="POST" class="needs-validation" novalidate>
+        <form action="validate_connexion" method="POST" class="needs-validation" novalidate>
             <div class="row">
                 <div class="mb-3 col col-12 col-sm-6">
                     <label for="qa_email" class="form-label">Email de connexion :</label>
@@ -25,10 +25,10 @@
                     </div>
                 </div>
                 <div>
-                    <button type="submit" class="qa_button col-2">S'inscrire</button>
+                    <button type="submit" class="qa_button col-2">Se connecter</button>
                 </div>
-
         </form>
+        <p class="mt-2">Vous n'avez pas de compte? <a href="inscription" class="qa_link">Cliquez ici!</a> </p> 
     </div>
 
 </div>

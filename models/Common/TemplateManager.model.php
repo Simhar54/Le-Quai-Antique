@@ -36,6 +36,17 @@ class TemplateManager
                     'name' => 'Inscription',
                     'url' => 'inscription',
                 ];
+        } else {
+            if($_SESSION['user']['role'] === 'user'){
+                $menuItems[] = [
+                    'name' => 'Mon compte',
+                    'url' => 'mon-compte',
+                ];
+                $menuItems[] = [
+                    'name' => 'Déconnexion',
+                    'url' => 'deconnexion',
+                ];
+            }
         }
 
         return $menuItems;

@@ -1,20 +1,20 @@
 <?php
 
 require_once 'controllers/MainController.controller.php';
-require_once 'models/User/InscriptionManager.model.php';
+require_once 'models/User/UserManager.model.php';
 
 
 class InscriptionController extends MainController
 {
     
-    private $inscriptionManager;
+    private $userManager;
 
     public function __construct()
     {
         parent::__construct();
 
         
-        $this->inscriptionManager = new InscriptionManager();
+        $this->userManager = new UserManager();
     }
 
 
@@ -55,15 +55,14 @@ class InscriptionController extends MainController
             $user->setAllergy($allergy);
             $user->setRole("user");
     
-            if ($this->inscriptionManager->compareEmail($user)) {
-                $this->inscriptionManager->addUser($user);
+            if ($this->userManager->compareEmail($user)) {
+                $this->userManager->addUser($user);
                 Toolbox::addMessageAlerte("Inscription réussie", Toolbox::COULEUR_VERTE);
             } else {
                 Toolbox::addMessageAlerte("Email déjà utilisé", Toolbox::COULEUR_ROUGE);
             }
         } catch (InvalidArgumentException $e) {
             Toolbox::addMessageAlerte($e->getMessage(), Toolbox::COULEUR_ROUGE);
-            var_dump($user);
         }
     
         header('Location: ' . URL . 'inscription');

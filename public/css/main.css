@@ -49,6 +49,10 @@ body {
   color: #f0ead6;
 }
 
+.qa_link {
+  color: #228B22;
+}
+
 h1 {
   font-family: CormorandGaramont, serif;
   font-size: 2rem;
