@@ -59,7 +59,7 @@ class ConnexionController extends MainController
                 Toolbox::addMessageAlerte("Connexion réussie, bienvenu " . $lastname . " " . $name . ".", Toolbox::COULEUR_VERTE);
             } else {
                 Toolbox::addMessageAlerte("Email ou mot de passe incorrect
-                <p class='mt-2'>Vous avez oublier votre mot de passe <a href='#' class='qa_link'>Cliquez ici!</a> </p> ", Toolbox::COULEUR_ROUGE);
+                <p class='mt-2'>Vous avez oublier votre mot de passe <a href='motDePasseOublie' class='qa_link'>Cliquez ici!</a> </p> ", Toolbox::COULEUR_ROUGE);
             }
         } catch (InvalidArgumentException $e) {
             Toolbox::addMessageAlerte($e->getMessage(), Toolbox::COULEUR_ROUGE);

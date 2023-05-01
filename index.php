@@ -16,12 +16,14 @@ require_once('controllers/Common/ErrorController.controller.php');
 require_once('controllers/User/AccueilController.controller.php');
 require_once('controllers/User/InscriptionController.controller.php');
 require_once('controllers/User/ConnexionController.controller.php');
+require_once('controllers/User/MotDePasseOublieController.controller.php');
 
 
-$errorcontroller = new ErrorController();
-$accueilcontroller = new AccueilController();
-$inscriptioncontroller = new InscriptionController();
-$connexioncontroller = new ConnexionController();
+$errorController = new ErrorController();
+$accueilController = new AccueilController();
+$inscriptionController = new InscriptionController();
+$connexionController = new ConnexionController();
+$motDePasseOublieController = new MotDePasseOublieController();
 
 
 
@@ -36,19 +38,22 @@ try {
 
     switch ($page) {
         case 'accueil':
-            $accueilcontroller->accueil();
+            $accueilController->accueil();
             break;
         case 'inscription':
-            $inscriptioncontroller->inscription();
+            $inscriptionController->inscription();
             break;
         case 'validate_suscribe':
-            $inscriptioncontroller->validate_suscribe();
+            $inscriptionController->validate_suscribe();
             break;
         case 'connexion':
-            $connexioncontroller->connexion();
+            $connexionController->connexion();
             break;
         case 'validate_connexion':
-            $connexioncontroller->validate_connexion();
+            $connexionController->validate_connexion();
+            break;
+            case "motDePasseOublie":
+            $motDePasseOublieController->mot_de_passe_oublie();
             break;
         default:
             throw new Exception('Page introuvable');

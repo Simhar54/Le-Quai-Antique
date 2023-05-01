@@ -19,17 +19,17 @@ class Securite
 
         $cookieName = self::COOKIE_NAME;
         $cookieValue = $ticket;
-        $expiration = time() + (60 * 20); // Expire dans 20 minutes
-        $path = "/"; // Disponible sur tout le domaine
-        $secure = true; // N'autorise que l'accès via HTTPS
-        $httpOnly = true; // Empêche l'accès au cookie via JavaScript
+        $expiration = time() + (60 * 20); 
+        $path = "/"; 
+        $secure = true; 
+        $httpOnly = true;
 
         setcookie($cookieName, $cookieValue, $expiration, $path, "", $secure, $httpOnly);
 
         $_SESSION['profil'][$cookieName] = $ticket;
     }
 
-    public static function verifierAuthentification() {
+    public static function checkAuthentification() {
         if (isset($_COOKIE[self::COOKIE_NAME]) && isset($_SESSION['profil'][self::COOKIE_NAME])) {
             if ($_COOKIE[self::COOKIE_NAME] === $_SESSION['profil'][self::COOKIE_NAME]) {
                 return true;
