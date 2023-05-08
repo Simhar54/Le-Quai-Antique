@@ -9,7 +9,7 @@
 <div class="container mt-5">
     <div class="row mx-auto">
         <p>Veuillez entrée votre adresse mail, nous vous enverrons un mail pour reinitialiser votre mot de passe.</p>
-        <form action="validate_connexion" method="POST" class="needs-validation" novalidate>
+        <form action="send_mail_password" method="POST" class="needs-validation" novalidate>
             <div class="row">
                 <div class="mb-3 col col-12 col-sm-6">
                     <label for="qa_email" class="form-label">Email de connexion :</label>

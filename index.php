@@ -55,9 +55,18 @@ try {
             case "motDePasseOublie":
             $motDePasseOublieController->mot_de_passe_oublie();
             break;
+        case "send_mail_password":
+            $motDePasseOublieController->send_mail_password();
+            break;
+            case "nouveauPassword":
+            $motDePasseOublieController->nouveau_password($url[1]);
+            break;
+         case "change_password":
+            $motDePasseOublieController->change_password();
+            break;
         default:
             throw new Exception('Page introuvable');
     }
 } catch (Exception $e) {
-    $errorcontroller->errorPage($e->getMessage());
+    $errorController->errorPage($e->getMessage());
 }

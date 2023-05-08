@@ -62,7 +62,8 @@ class ConnexionController extends MainController
                 <p class='mt-2'>Vous avez oublier votre mot de passe <a href='motDePasseOublie' class='qa_link'>Cliquez ici!</a> </p> ", Toolbox::COULEUR_ROUGE);
             }
         } catch (InvalidArgumentException $e) {
-            Toolbox::addMessageAlerte($e->getMessage(), Toolbox::COULEUR_ROUGE);
+            error_log($e->getMessage());
+            Toolbox::addMessageAlerte("Une erreur s'est produite.", Toolbox::COULEUR_ROUGE);
         }
         header("Location:" . URL . "connexion");
     }

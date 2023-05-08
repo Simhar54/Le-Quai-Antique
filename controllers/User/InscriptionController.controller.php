@@ -62,7 +62,8 @@ class InscriptionController extends MainController
                 Toolbox::addMessageAlerte("Email déjà utilisé", Toolbox::COULEUR_ROUGE);
             }
         } catch (InvalidArgumentException $e) {
-            Toolbox::addMessageAlerte($e->getMessage(), Toolbox::COULEUR_ROUGE);
+            error_log($e->getMessage());
+            Toolbox::addMessageAlerte("Erreur lors de l'inscription", Toolbox::COULEUR_ROUGE);
         }
     
         header('Location: ' . URL . 'inscription');

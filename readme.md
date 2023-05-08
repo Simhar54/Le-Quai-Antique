@@ -1,37 +1,39 @@
-
-# Le Quai Antique
-
-Ce projet utilise PHP et le package `dotenv` pour gérer les variables d'environnement. Voici les étapes pour installer et configurer le projet en local.
-
 ## Prérequis
 
-- PHP 7.2 ou supérieur
+- PHP 8 ou supérieur
 - Composer (gestionnaire de dépendances PHP)
 
 ## Installation
 
 1. Clonez le dépôt Git :
 
-git clone https://github.com/Simhar54/Le-Quai-Antique
+   git clone https://github.com/Simhar54/Le-Quai-Antique
 
 2. Accédez au répertoire du projet :
 
-cd votre-projet
-
+   cd Le-Quai-Antique
 
 3. Installez les dépendances à l'aide de Composer :
 
-composer install
+   composer install
 
+4. Créez un fichier `.env` à la racine du projet.
 
-## Configuration
+5. Ouvrez le fichier `.env` avec un éditeur de texte et ajoutez les valeurs des variables d'environnement suivantes selon votre configuration locale :
 
-1. Créez un fichier `.env` à la racine du projet.
+# Configuration de la base de données
+   DB_HOST=localhost
+   DB_NAME=ma_base_de_donnees
+   DB_USER=utilisateur
+   DB_PASSWORD=mot_de_passe
 
-2. Ouvrez le fichier `.env` avec un éditeur de texte et modifiez les valeurs des variables d'environnement selon votre configuration locale. Par exemple :
+   # Configuration SMTP pour PHPMailer
+   SMTP_HOST=smtp.gmail.com
+   SMTP_PORT=587
+   SMTP_SECURE=tls
+   SMTP_AUTH=true
+   SMTP_USERNAME=votre_adresse_email@gmail.com
+   SMTP_PASSWORD=votre_mot_de_passe
 
-DB_HOST=localhost
-DB_NAME=ma_base_de_donnees
-DB_USER=utilisateur
-DB_PASSWORD=mot_de_passe
+  
 

@@ -85,6 +85,11 @@ function validateFields(input, passwordInput) {
     isValid = input.value.trim() === "" || validateText(input);
   }
 
+  // Validation for Token input
+  if (fieldName === "token") {
+    isValid = validateRequired(input);
+  }
+
   // Apply Bootstrap validation styles
   if (isValid) {
     input.classList.remove("is-invalid");

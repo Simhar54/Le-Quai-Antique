@@ -39,6 +39,27 @@ class UserManager extends MainManager {
     }
 }
 
+    public function findMail(QaUser $user) {
+        $req = "SELECT * FROM qa_user WHERE email = :email";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":email", $user->getEmail(), PDO::PARAM_STR);
+        $stmt->execute();
+        $userFound = $stmt->fetch(PDO::FETCH_OBJ);
+        $stmt->closeCursor();
+
+        if($userFound) {
+            $user = new QaUser(
+                id: $userFound->id,
+                email: $userFound->email
+            );
+            return $user;
+
+        } else {
+            return null;
+        }
+        
+    }
+
     
 
     public function addUser($user) {
@@ -57,6 +78,18 @@ class UserManager extends MainManager {
         $stmt->closeCursor();
 
         return $isInserted;
+    }
+
+    public function updatePassword($user){
+        $req = "UPDATE qa_user SET password = :password WHERE id = :id";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":password", $user->getPassword(), PDO::PARAM_STR);
+        $stmt->bindValue(":id", $user->getId(), PDO::PARAM_INT);
+        $stmt->execute();
+        $isUpdated = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+
+        return $isUpdated;
     }
 
 }

@@ -21,8 +21,8 @@ class Securite
         $cookieValue = $ticket;
         $expiration = time() + (60 * 20); 
         $path = "/"; 
-        $secure = true; 
-        $httpOnly = true;
+        $secure = false; 
+        $httpOnly = false;
 
         setcookie($cookieName, $cookieValue, $expiration, $path, "", $secure, $httpOnly);
 
