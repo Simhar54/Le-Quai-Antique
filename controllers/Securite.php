@@ -26,20 +26,30 @@ class Securite
 
         setcookie($cookieName, $cookieValue, $expiration, $path, "", $secure, $httpOnly);
 
-        $_SESSION['profil'][$cookieName] = $ticket;
+        $_SESSION['user'][$cookieName] = $ticket;
+    }
+
+    public static function unsetCookieConnexion()
+    {
+        unset($_SESSION['user'][self::COOKIE_NAME]);
+        setcookie(self::COOKIE_NAME, "", time() - 3600); 
     }
 
     public static function checkAuthentification() {
-        if (isset($_COOKIE[self::COOKIE_NAME]) && isset($_SESSION['profil'][self::COOKIE_NAME])) {
-            if ($_COOKIE[self::COOKIE_NAME] === $_SESSION['profil'][self::COOKIE_NAME]) {
+        if (isset($_COOKIE[self::COOKIE_NAME]) && isset($_SESSION['user'][self::COOKIE_NAME])) {
+            if ($_COOKIE[self::COOKIE_NAME] === $_SESSION['user'][self::COOKIE_NAME]) {
                 return true;
             }
         }
         
-        unset($_SESSION['profil']);
+        unset($_SESSION['user']);
         setcookie(self::COOKIE_NAME, "", time() - 3600); 
         
         return false;
+    }
+
+    public static function isConnected () {
+        return (!empty($_SESSION['user']));
     }
     
 }

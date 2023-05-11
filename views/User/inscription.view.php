@@ -58,11 +58,10 @@
                 <div class="mb-3 col-12 col-sm-6" id="allergy_form_container">
                     <label for="qa_allergy_1" class="form-label">Allergies :</label>
 
-
                     <ul class="qa_allergy_form_list">
 
                     </ul>
-
+                    
                     <input type="text" class="form-control" id="qa_allergy_1" name="allergies[]" oninput="validateFields(this)">
                     <div class="invalid-feedback">
                         Veuillez entrer une allergie.

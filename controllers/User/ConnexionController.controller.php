@@ -1,19 +1,19 @@
 <?php
 
 require_once 'controllers/MainController.controller.php';
-require_once 'models/User/UserManager.model.php';
+require_once 'models/User/ConnexionManager.model.php';
 
 
 class ConnexionController extends MainController
 {
 
-    private $userManager;
+    private $connexionManager;
 
     public function __construct()
     {
         parent::__construct();
 
-        $this->userManager = new UserManager();
+        $this->connexionManager = new ConnexionManager();
     }
 
 
@@ -43,7 +43,7 @@ class ConnexionController extends MainController
         try {
             $user->setEmail($email);
             $user->setPassword($password);
-            $loggedInUser = $this->userManager->validateCredentials($user);
+            $loggedInUser = $this->connexionManager->validateCredentials($user);
 
             if ($loggedInUser !== null) {
                 $_SESSION["user"] = [
@@ -57,14 +57,16 @@ class ConnexionController extends MainController
 
 
                 Toolbox::addMessageAlerte("Connexion réussie, bienvenu " . $lastname . " " . $name . ".", Toolbox::COULEUR_VERTE);
+                header("Location:" . URL . "accueil");
             } else {
                 Toolbox::addMessageAlerte("Email ou mot de passe incorrect
                 <p class='mt-2'>Vous avez oublier votre mot de passe <a href='motDePasseOublie' class='qa_link'>Cliquez ici!</a> </p> ", Toolbox::COULEUR_ROUGE);
+                header("Location:" . URL . "connexion");
             }
         } catch (InvalidArgumentException $e) {
             error_log($e->getMessage());
             Toolbox::addMessageAlerte("Une erreur s'est produite.", Toolbox::COULEUR_ROUGE);
         }
-        header("Location:" . URL . "connexion");
+      
     }
 }

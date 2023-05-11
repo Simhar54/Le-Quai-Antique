@@ -40,11 +40,11 @@ class TemplateManager
             if($_SESSION['user']['role'] === 'user'){
                 $menuItems[] = [
                     'name' => 'Mon compte',
-                    'url' => 'mon-compte',
+                    'url' => 'account/mon_compte',
                 ];
                 $menuItems[] = [
                     'name' => 'Déconnexion',
-                    'url' => 'deconnexion',
+                    'url' => 'account/deconnexion',
                 ];
             }
         }

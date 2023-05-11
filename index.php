@@ -17,6 +17,7 @@ require_once('controllers/User/AccueilController.controller.php');
 require_once('controllers/User/InscriptionController.controller.php');
 require_once('controllers/User/ConnexionController.controller.php');
 require_once('controllers/User/MotDePasseOublieController.controller.php');
+require_once('controllers/User/MonCompteController.controller.php');
 
 
 $errorController = new ErrorController();
@@ -24,6 +25,7 @@ $accueilController = new AccueilController();
 $inscriptionController = new InscriptionController();
 $connexionController = new ConnexionController();
 $motDePasseOublieController = new MotDePasseOublieController();
+$monCompteController = new MonCompteController();
 
 
 
@@ -52,18 +54,41 @@ try {
         case 'validate_connexion':
             $connexionController->validate_connexion();
             break;
-            case "motDePasseOublie":
+        case "motDePasseOublie":
             $motDePasseOublieController->mot_de_passe_oublie();
             break;
         case "send_mail_password":
             $motDePasseOublieController->send_mail_password();
             break;
-            case "nouveauPassword":
+        case "nouveauPassword":
             $motDePasseOublieController->nouveau_password($url[1]);
             break;
-         case "change_password":
+        case "change_password":
             $motDePasseOublieController->change_password();
             break;
+        case "account":
+            if (!Securite::isConnected()) {
+                Toolbox::addMessageAlerte("Vous devez être connecté pour accéder à cette page", Toolbox::COULEUR_ROUGE);
+                header("Location:" . URL . "connexion");
+                exit();
+            } elseif (!Securite::checkAuthentification()) {
+                Toolbox::addMessageAlerte("Veuillez vous reconnecter", Toolbox::COULEUR_ROUGE);
+                header("Location:" . URL . "connexion");
+                exit();
+            } else {
+                Securite::genererCookieConnexion();
+                switch ($url[1]) {
+                    case "mon_compte":
+                        $monCompteController->mon_compte();
+                        break;
+                    case "deconnexion":
+                        $monCompteController->deconnexion();
+                        break;
+                    default:
+                        throw new Exception('Page introuvable');
+                }
+            }
+
         default:
             throw new Exception('Page introuvable');
     }

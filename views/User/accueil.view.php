@@ -7,6 +7,10 @@
         </div>
         <button class=" qa_button qa_image_button">Réserver une table!</button>
     </div>
+    <div class="mt-3">
+        <?php Toolbox::displayAlerts(); ?>
+    </div>
+    
     <div id="qa_accueil_content">
         <h2>Qui sommes nous?</h2>
         <div class="text-start">

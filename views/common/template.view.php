@@ -37,7 +37,7 @@
 
                         foreach ($menuItems as $menuItem) : ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?= $menuItem['url'] ?>"><?= $menuItem['name'] ?></a>
+                                <a class="nav-link" href="<?=URL?><?= $menuItem['url']  ?>"><?= $menuItem['name'] ?></a>
                             </li>
                         <?php endforeach; ?>
                     </ul>
@@ -58,7 +58,7 @@
 
                             foreach ($menuItems as $menuItem) : ?>
                                 <li class="qa_sideMenu_listItem ">
-                                    <a href="<?= $menuItem['url'] ?>"><?= $menuItem['name'] ?></a>
+                                    <a href="<?=URL?><?= $menuItem['url']  ?>"><?= $menuItem['name'] ?></a>
                                 </li>
                             <?php endforeach; ?>
                         </ul>

@@ -1,14 +1,13 @@
 <?php
 
 require_once 'controllers/MainController.controller.php';
-require_once 'models/User/UserManager.model.php';
 require_once 'models/User/MotDePasseOublieManager.model.php';
 
 
 class MotDePasseOublieController extends MainController
 {
 
-    private $userManager;
+
     private $motDePasseOublieManager;
 
     public function __construct()
@@ -16,7 +15,7 @@ class MotDePasseOublieController extends MainController
         parent::__construct();
 
 
-        $this->userManager = new UserManager();
+    
         $this->motDePasseOublieManager  = new MotDePasseOublieManager();
     }
 
@@ -45,7 +44,7 @@ class MotDePasseOublieController extends MainController
         try {
             $user->setEmail($email);
             //Chek if mail exist
-            if ($returnUser = $this->userManager->findMail($user)) {
+            if ($returnUser = $this->motDePasseOublieManager->findMail($user)) {
                 $mail = $returnUser->getEmail();
                 $id = $returnUser->getId();
                 $token = rand(0, 9999);
@@ -128,7 +127,7 @@ class MotDePasseOublieController extends MainController
                 try {
                     $user->setId($id);
                     $user->setPassword($password_crypte);
-                    if($this->userManager->updatePassword($user)){
+                    if($this->motDePasseOublieManager->updatePassword($user)){
                         Toolbox::addMessageAlerte("Votre mot de passe a été modifié", Toolbox::COULEUR_VERTE);
                     } else {
                         Toolbox::addMessageAlerte("Une erreur s'est produite", Toolbox::COULEUR_ROUGE);
