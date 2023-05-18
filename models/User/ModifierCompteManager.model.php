@@ -33,5 +33,16 @@ class ModifierCompteManager extends MainManager {
     return $isUpdated;
    }
 
+   public function deleteUser($id_user){
+    $req = "DELETE FROM qa_user WHERE id = :id_user";
+    $stmt = $this->getBdd()->prepare($req);
+    $stmt->bindValue(":id_user", $id_user, PDO::PARAM_INT);
+    $stmt->execute();
+    $isDeleted = ($stmt->rowCount() > 0);
+    $stmt->closeCursor();
+
+    return $isDeleted;
+   }
+
 
 }

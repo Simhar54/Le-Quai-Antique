@@ -86,11 +86,16 @@ try {
                     case "deconnexion":
                         $monCompteController->deconnexion();
                         break;
-                        case "modifier_compte":
+                    case "modifier_compte":
                         $modifierCompteController->modifier_compte();
                         break;
-                        case "modification_account_information":
+                    case "modification_account_information":
                         $modifierCompteController->modification_account_information();
+                        break;
+                    case "supprimer_compte":
+                        $modifierCompteController->supprimer_compte();
+                        break;
+
                     default:
                         throw new Exception('Page introuvable');
                 }

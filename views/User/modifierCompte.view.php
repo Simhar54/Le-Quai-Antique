@@ -57,9 +57,11 @@
 
                 <div>
                     <button type="submit" class="qa_button col-2">Valide Modification</button>
+                   
                 </div>
-
         </form>
+        <a href="<?= URL ?>account/supprimer_compte" class="btn btn-danger mt-5 ms-2 col-2" onclick="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ?');">Supprimer compte</a>
+
     </div>
 
 </div>

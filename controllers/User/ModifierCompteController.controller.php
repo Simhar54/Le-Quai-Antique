@@ -20,18 +20,12 @@ class ModifierCompteController extends MainController
         $this->userManager = new UserManager();
     }
 
-
-
-
     public function modifier_compte()
     {
         $id_user = $_SESSION['user']['id'];
         $user = $this->getUserInfo($id_user);
         $user->allergy = explode('/', $user->allergy);
-
         $id_input = count($user->allergy) + 1;
-
-
 
         $data = [
             'view' => 'views/User/modifierCompte.view.php',
@@ -70,7 +64,6 @@ class ModifierCompteController extends MainController
 
         $id_user = $_SESSION['user']['id'];
         $mail_user = $this->modifierCompteManager->getUserMail($id_user);
-
         $user = new QaUser();
         try {
             $user->setLastName($lastName);
@@ -93,12 +86,27 @@ class ModifierCompteController extends MainController
            } else {
             Toolbox::addMessageAlerte("Erreur lors de la modification du compte", Toolbox::COULEUR_ROUGE);
             header('Location: ' . URL . 'account/modifier_compte');
-           }
-           
+           } 
             
         } catch (InvalidArgumentException $e) {
             error_log($e->getMessage());
             Toolbox::addMessageAlerte("Erreur lors de l'inscription", Toolbox::COULEUR_ROUGE);
         }
+    }
+
+
+    public function supprimer_compte()
+    {
+        $id_user = $_SESSION['user']['id'];
+        if( $this->modifierCompteManager->deleteUser($id_user)) {
+            Securite::unsetCookieConnexion();
+            Toolbox::addMessageAlerte("Votre compte a bien été supprimé.", Toolbox::COULEUR_VERTE);
+            header('Location: ' . URL . 'accueil');
+        } else {
+            Toolbox::addMessageAlerte("Erreur lors de la suppression du compte", Toolbox::COULEUR_ROUGE);
+            header('Location: ' . URL . 'account/mon_compte');
+        }
+       
+    
     }
 }
