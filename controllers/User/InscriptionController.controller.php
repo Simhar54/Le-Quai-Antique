@@ -2,12 +2,14 @@
 
 require_once 'controllers/MainController.controller.php';
 require_once 'models/User/InscriptionManager.model.php';
+require_once("./models/User/UserManager.model.php");
 
 
 class InscriptionController extends MainController
 {
     
     private $inscriptionManager;
+    private $userManager;
 
     public function __construct()
     {
@@ -15,6 +17,7 @@ class InscriptionController extends MainController
 
         
         $this->inscriptionManager = new InscriptionManager();
+        $this->userManager = new UserManager();
     }
 
 
@@ -34,6 +37,7 @@ class InscriptionController extends MainController
         ];
         $this->generatePage($data);
     }
+    
     public function validate_suscribe()
     {
         $lastName = $_POST['lastName'];
@@ -42,7 +46,9 @@ class InscriptionController extends MainController
         $password = $_POST['password'];
         $guests = $_POST['guests'];
         $allergy_Array = $_POST['allergies'];
+        $allergy_Array = array_filter($allergy_Array);  // Remove empty elements
         $allergy = implode("/ ", $allergy_Array);
+        
         $passwordCrypte = password_hash($password, PASSWORD_DEFAULT);
     
         $user = new QaUser();
@@ -55,7 +61,7 @@ class InscriptionController extends MainController
             $user->setAllergy($allergy);
             $user->setRole("user");
     
-            if ($this->inscriptionManager->compareEmail($user)) {
+            if ($this->userManager->compareEmail($user)) {
                 $this->inscriptionManager->addUser($user);
                 Toolbox::addMessageAlerte("Inscription réussie", Toolbox::COULEUR_VERTE);
             } else {

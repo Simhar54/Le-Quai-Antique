@@ -18,6 +18,7 @@ require_once('controllers/User/InscriptionController.controller.php');
 require_once('controllers/User/ConnexionController.controller.php');
 require_once('controllers/User/MotDePasseOublieController.controller.php');
 require_once('controllers/User/MonCompteController.controller.php');
+require_once('controllers/User/ModifierCompteController.controller.php');
 
 
 $errorController = new ErrorController();
@@ -26,6 +27,7 @@ $inscriptionController = new InscriptionController();
 $connexionController = new ConnexionController();
 $motDePasseOublieController = new MotDePasseOublieController();
 $monCompteController = new MonCompteController();
+$modifierCompteController = new ModifierCompteController();
 
 
 
@@ -84,6 +86,11 @@ try {
                     case "deconnexion":
                         $monCompteController->deconnexion();
                         break;
+                        case "modifier_compte":
+                        $modifierCompteController->modifier_compte();
+                        break;
+                        case "modification_account_information":
+                        $modifierCompteController->modification_account_information();
                     default:
                         throw new Exception('Page introuvable');
                 }

@@ -1,22 +1,20 @@
 <?php
 
 require_once 'controllers/MainController.controller.php';
-require_once 'models/User/MonCompteManager.model.php';
+require_once ("./models/User/UserManager.model.php");
 
 
 class MonCompteController extends MainController
 {
     
-    private $monCompteManager;
+   
+    private $userManager;
 
     public function __construct()
     {
         parent::__construct();
 
-        $this->monCompteManager = new MonCompteManager();
-
-        
-  
+        $this->userManager = new UserManager();
     }
 
 
@@ -42,7 +40,7 @@ class MonCompteController extends MainController
 
     public function getUserInfo($id_user) {
         $user = new QaUser();
-        $user = $this->monCompteManager->getUserInfo($id_user);
+        $user = $this->userManager->getUserInfo($id_user);
         return $user;
         
     }

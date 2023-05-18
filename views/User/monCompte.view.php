@@ -43,7 +43,7 @@
             </dl>
         </div>
         <div class="col-12-col-sm-6 text-center">
-        <a href="#" class="col-3">
+        <a href="<?= URL ?>account/modifier_compte" class="col-3">
         <button type="button" class="qa_button">Modifier mon compte</button>
     </a>
         </div>
