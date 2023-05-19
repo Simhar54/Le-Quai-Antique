@@ -42,13 +42,22 @@
                 ?>
             </dl>
         </div>
-        <div class="col-12-col-sm-6 text-center">
-        <a href="<?= URL ?>account/modifier_compte" class="col-3">
-        <button type="button" class="qa_button">Modifier mon compte</button>
-    </a>
+        <div class="row mt-3">
+            <div class="col-12 col-sm-6 text-center">
+                <a href="<?= URL ?>account/modifier_compte" class="col-3">
+                    <button type="button" class="qa_button">Modifier mon compte</button>
+                </a>
+            </div>
+            <div class="col-12 col-sm-6 text-center">
+                <a href="<?= URL ?>account/modifier_mot_de_passe" class="col-3">
+                    <button type="button" class="qa_button">Modifier mon mont de passe</button>
+                </a>
+            </div>
         </div>
-      
+
+
+
     </div>
- 
+
 
 </div>

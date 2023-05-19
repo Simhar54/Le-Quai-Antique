@@ -64,7 +64,7 @@ function validateFields(input, passwordInput) {
   }
 
   // Validation for Password input
-  if (fieldName === "password") {
+  if (fieldName === "password" || fieldName === "old_password") {
     isValid = validateRequired(input) && validatePassword(input);
   }
 

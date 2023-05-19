@@ -19,6 +19,7 @@ require_once('controllers/User/ConnexionController.controller.php');
 require_once('controllers/User/MotDePasseOublieController.controller.php');
 require_once('controllers/User/MonCompteController.controller.php');
 require_once('controllers/User/ModifierCompteController.controller.php');
+require_once('controllers/User/ModifierMotDePasseController.controller.php');
 
 
 $errorController = new ErrorController();
@@ -28,6 +29,7 @@ $connexionController = new ConnexionController();
 $motDePasseOublieController = new MotDePasseOublieController();
 $monCompteController = new MonCompteController();
 $modifierCompteController = new ModifierCompteController();
+$modifierMotDePasseController = new ModifierMotDePasseController();
 
 
 
@@ -94,6 +96,12 @@ try {
                         break;
                     case "supprimer_compte":
                         $modifierCompteController->supprimer_compte();
+                        break;
+                    case "modifier_mot_de_passe":
+                        $modifierMotDePasseController->modifier_mot_de_passe();
+                        break;
+                    case "modification_password":
+                        $modifierMotDePasseController->modification_password();
                         break;
 
                     default:
