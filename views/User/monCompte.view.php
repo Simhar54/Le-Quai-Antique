@@ -50,7 +50,7 @@
             </div>
             <div class="col-12 col-sm-6 text-center">
                 <a href="<?= URL ?>account/modifier_mot_de_passe" class="col-3">
-                    <button type="button" class="qa_button">Modifier mon mont de passe</button>
+                    <button type="button" class="qa_button">Modifier mon mot de passe</button>
                 </a>
             </div>
         </div>

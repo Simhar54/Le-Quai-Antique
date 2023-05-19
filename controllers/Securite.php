@@ -51,5 +51,9 @@ class Securite
     public static function isConnected () {
         return (!empty($_SESSION['user']));
     }
+
+    public static function isAdmin () {
+        return (!empty($_SESSION['user']) && $_SESSION['user']['role'] === 'admin');
+    }
     
 }

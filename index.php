@@ -20,6 +20,7 @@ require_once('controllers/User/MotDePasseOublieController.controller.php');
 require_once('controllers/User/MonCompteController.controller.php');
 require_once('controllers/User/ModifierCompteController.controller.php');
 require_once('controllers/User/ModifierMotDePasseController.controller.php');
+require_once('controllers/Administrator/AdministrationController.controller.php');
 
 
 $errorController = new ErrorController();
@@ -30,7 +31,7 @@ $motDePasseOublieController = new MotDePasseOublieController();
 $monCompteController = new MonCompteController();
 $modifierCompteController = new ModifierCompteController();
 $modifierMotDePasseController = new ModifierMotDePasseController();
-
+$administrationController = new AdministrationController();
 
 
 try {
@@ -106,6 +107,23 @@ try {
 
                     default:
                         throw new Exception('Page introuvable');
+                }
+            }
+            break;
+        case "admin":
+            if (!Securite::isConnected()) {
+                Toolbox::addMessageAlerte("Vous devez être connecté pour accéder à cette page", Toolbox::COULEUR_ROUGE);
+                header("Location:" . URL . "connexion");
+                exit();
+            } elseif (!Securite::isAdmin()) {
+                Toolbox::addMessageAlerte("Vous n'avez pas les droits pour accéder à cette page", Toolbox::COULEUR_ROUGE);
+                header("Location:" . URL . "connexion");
+            } else {
+                Securite::genererCookieConnexion();
+                switch ($url[1]) {
+                    case "Administration":
+                        $administrationController->administration();
+                        break;
                 }
             }
 

@@ -1,0 +1,10 @@
+.qa_title_menu_admin {
+ 
+    text-decoration: underline black 1px;
+    text-underline-offset: 5px; 
+    margin-top: 20px;
+}
+
+.qa_icon_admin {
+   font-size: large;
+}

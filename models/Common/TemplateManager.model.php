@@ -37,7 +37,7 @@ class TemplateManager
                     'url' => 'inscription',
                 ];
         } else {
-            if($_SESSION['user']['role'] === 'user'){
+            if($_SESSION['user']['role'] === 'user'|| $_SESSION['user']['role'] === 'admin'){
                 $menuItems[] = [
                     'name' => 'Mon compte',
                     'url' => 'account/mon_compte',
@@ -45,6 +45,12 @@ class TemplateManager
                 $menuItems[] = [
                     'name' => 'Déconnexion',
                     'url' => 'account/deconnexion',
+                ];
+            }
+            if($_SESSION['user']['role'] === 'admin'){
+                $menuItems[] = [
+                    'name' => 'Administration',
+                    'url' => 'admin/Administration',
                 ];
             }
         }

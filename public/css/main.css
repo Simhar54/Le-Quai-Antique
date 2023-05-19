@@ -39,6 +39,7 @@ body {
   border-radius: 20px;
   padding: 5px;
   font-size: small;
+  min-width: 100px;
 }
 
 .qa_button:hover {

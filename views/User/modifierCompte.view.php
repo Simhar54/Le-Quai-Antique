@@ -56,7 +56,7 @@
                 </div>
 
                 <div>
-                    <button type="submit" class="qa_button col-2">Valide Modification</button>
+                    <button type="submit" class="qa_button col-2">Valider Modification</button>
                    
                 </div>
         </form>
